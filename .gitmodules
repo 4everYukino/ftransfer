@@ -1,3 +1,6 @@
 [submodule "third-src/spdlog"]
 	path = third-src/spdlog
 	url = https://github.com/gabime/spdlog.git
+[submodule "third-src/jsoncpp"]
+	path = third-src/jsoncpp
+	url = git@github.com:open-source-parsers/jsoncpp.git
