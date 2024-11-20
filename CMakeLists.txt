@@ -15,6 +15,12 @@ ADD_SUBDIRECTORY(${THIRD_DIR}/jsoncpp)
 
 INCLUDE_DIRECTORIES(${THIRD_DIR}/jsoncpp/include)
 
+# Add libevent
+
+ADD_SUBDIRECTORY(${THIRD_DIR}/libevent)
+
+INCLUDE_DIRECTORIES(${THIRD_DIR}/libevent/include)
+
 # Add source files
 
 AUX_SOURCE_DIRECTORY(./debug SOURCE_LIST)
@@ -29,4 +35,4 @@ add_executable(ftransfer ${SOURCE_LIST})
 
 # Link to libs
 
-target_link_libraries(ftransfer jsoncpp_lib spdlog)
+target_link_libraries(ftransfer event_core jsoncpp_lib spdlog)

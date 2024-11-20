@@ -4,3 +4,6 @@
 [submodule "third-src/jsoncpp"]
 	path = third-src/jsoncpp
 	url = git@github.com:open-source-parsers/jsoncpp.git
+[submodule "third-src/libevent"]
+	path = third-src/libevent
+	url = https://github.com/libevent/libevent.git

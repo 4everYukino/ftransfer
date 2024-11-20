@@ -3,6 +3,8 @@
 #include <json/json.h>
 #include <json/reader.h>
 
+#include <event2/event.h>
+
 #include <errno.h>
 #include <fstream>
 #include <string>
@@ -24,6 +26,7 @@ int main()
     if (!fs.is_open()) {
         spdlog::error("Failed to open '{}', errno={}, {}.",
                       demoPath, errno, strerror(errno));
+        return -1;
     }
 
     const Deleter closer([&fs] {
@@ -39,6 +42,19 @@ int main()
     }
 
     spdlog::debug("{}", value.toStyledString());
+
+    // Debug libevent
+    auto base = event_base_new();
+    if (!base) {
+        spdlog::error("Failed to init libevnet, ...");
+        return -1;
+    }
+
+    const Deleter freer([&base] {
+        event_base_free(base);
+    });
+
+    spdlog::debug("init libevent successfully.");
 
     return 0;
 }
